@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Корзина - RubickShop</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- БАННЕР -->
+<div id="promoBanner" class="promo-banner">
+    <div class="promo-banner-content">
+        <span class="promo-banner-text">🎁 Дарим 3000 бонусов при первом заказе!</span>
+        <button class="promo-banner-close" onclick="closePromoBanner()">×</button>
+    </div>
+</div>
+
+<!-- ШАПКА -->
+<header class="header">
+    <div class="header-left">
+        <a href="index.html" class="logo-link"><h1 class="logo">RubickShop</h1></a>
+    </div>
+    <nav class="header-center">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="feedback.html" target="_blank">Связь</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <a href="https://t.me" target="_blank" class="social-btn"><img src="https://img.icons8.com/?size=100&id=F4ZPUh2Mk5tk&format=png&color=1A1A1A" alt="Telegram"></a>
+        <a href="https://vk.com" target="_blank" class="social-btn"><img src="https://img.icons8.com/?size=100&id=VUGXoXQMAcS9&format=png&color=1A1A1A" alt="VK"></a>
+        <a href="cart.html" class="cart-btn" id="cartIcon">
+            <img src="https://img.icons8.com/?size=100&id=9720&format=png&color=1A1A1A" alt="Корзина" class="cart-icon">
+            <span id="cartCounter">0</span>
+        </a>
+    </div>
+</header>
+
+<!-- КОРЗИНА -->
+<main class="cart-page">
+    <div class="cart-content">
+        <h1>Ваша корзина</h1>
+        <div id="cartItemsList"></div>
+        
+        <div id="orderDetails" style="display:none;">
+            <div class="detail-row">
+                <span>Товары (<span id="itemsCount">0</span>)</span>
+                <span id="totalSum">0 ₽</span>
+            </div>
+            <div class="detail-row">
+                <small>Скидка за объём</small>
+                <span id="totalDiscount">−0 ₽</span>
+            </div>
+            <div class="detail-row">
+                <small>Промо-скидка 17%</small>
+                <span id="promoDiscount">−0 ₽</span>
+            </div>
+            <div class="detail-row total-row">
+                <span>Итого:</span>
+                <span id="finalTotal">0 ₽</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Заказ оформлен! 🎉')">Оформить заказ</button>
+        </div>
+    </div>
+</main>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <p>© 2026 RubickShop. Все права защищены.</p>
+</footer>
+
+<script src="cart.js"></script>
+</body>
+</html>

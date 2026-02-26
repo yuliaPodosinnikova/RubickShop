@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RubickShop - Гаджеты 2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- РЕКЛАМНЫЙ БАННЕР -->
+<div id="promoBanner" class="promo-banner">
+    <div class="promo-banner-content">
+        <span class="promo-banner-text">🎁 Дарим 3000 бонусов при первом заказе!</span>
+        <button class="promo-banner-close" onclick="closePromoBanner()">×</button>
+    </div>
+</div>
+
+<!-- ШАПКА -->
+<header class="header">
+    <div class="header-left">
+        <a href="index.html" class="logo-link"><h1 class="logo">RubickShop</h1></a>
+    </div>
+    <nav class="header-center">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="feedback.html" target="_blank">Связь</a></li>
+        </ul>
+    </nav>
+    <div class="header-right">
+        <a href="https://t.me" target="_blank" class="social-btn"><img src="https://img.icons8.com/?size=100&id=F4ZPUh2Mk5tk&format=png&color=1A1A1A" alt="Telegram"></a>
+        <a href="https://vk.com" target="_blank" class="social-btn"><img src="https://img.icons8.com/?size=100&id=VUGXoXQMAcS9&format=png&color=1A1A1A" alt="VK"></a>
+        <a href="cart.html" class="cart-btn" id="cartIcon">
+            <img src="https://img.icons8.com/?size=100&id=9720&format=png&color=1A1A1A" alt="Корзина" class="cart-icon">
+            <span id="cartCounter">0</span>
+        </a>
+    </div>
+</header>
+
+<!-- ОСНОВНОЙ КОНТЕНТ -->
+<div class="main-content">
+    <aside class="sidebar">
+        <h3>Фильтры</h3>
+        <div class="filter-group">
+            <h4>Бренд</h4>
+            <label><input type="checkbox" value="Samsung" onchange="filterProducts()"> Samsung</label>
+            <label><input type="checkbox" value="Huawei" onchange="filterProducts()"> Huawei</label>
+            <label><input type="checkbox" value="Sony" onchange="filterProducts()"> Sony</label>
+        </div>
+        <div class="filter-group">
+            <h4>Категория</h4>
+            <label><input type="checkbox" value="smartphones" onchange="filterProducts()"> Смартфоны</label>
+            <label><input type="checkbox" value="laptops" onchange="filterProducts()"> Ноутбуки</label>
+            <label><input type="checkbox" value="headphones" onchange="filterProducts()"> Наушники</label>
+            <label><input type="checkbox" value="tablets" onchange="filterProducts()"> Планшеты</label>
+        </div>
+        <div class="filter-group">
+            <h4>Цена до</h4>
+            <input type="range" id="priceRange" min="0" max="200000" value="200000" onchange="updatePriceSlider()">
+            <span id="priceValue">300 000 ₽</span>
+        </div>
+        <button class="reset-btn" onclick="resetFilters()">Сбросить</button>
+    </aside>
+
+    <main class="content">
+        <h2>Каталог товаров</h2>
+        <div class="catalog" id="productGrid"></div>
+    </main>
+</div>
+
+<!-- МОДАЛКА -->
+<div id="productModal" class="modal">
+    <span class="close" onclick="closeModal()">×</span>
+    <div class="modal-content">
+        <div class="modal-img-section">
+            <img id="modalImg" src="" alt="">
+        </div>
+        <div class="modal-info">
+            <h1 id="modalTitle"></h1>
+            <p class="price-main" id="modalPrice"></p>
+            <p class="price-old" id="modalOldPrice"></p>
+            <p id="modalCashback"></p>
+            <table id="modalSpecs"></table>
+            <button class="modal-add-cart" onclick="addToCartFromModal()">В корзину</button>
+        </div>
+    </div>
+</div>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <p>© 2026 RubickShop. Все права защищены.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
