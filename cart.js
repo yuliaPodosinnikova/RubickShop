@@ -9,7 +9,6 @@ const rawProducts = [
     {id:7,name:'Samsung S24 Uttra',oldPrice:79900,price:76990,brand:'Samsung',category:'smartphones',img:'https://avatars.mds.yandex.net/get-goods_pic/15070395/hatf0fc9d52eee22be96b1352b418dc2f71/orig  ',cashback:149,specs:[['Тип','Смартфон'],['OS','Android'],['Экран','6.67"'],['Камера','108MP']]},
     {id:8,name:'Samsung Galaxy Z Fold7',oldPrice:133990,price:129990,brand:'Samsung',category:'smartphones',img:'https://ir.ozone.ru/s3/multimedia-1-k/7743508328.jpg  ',cashback:149,specs:[['Тип','Смартфон'],['OS','Android'],['Экран','308"'],['Камера','108MP']]}
 ];
-
 // Очищаем URL и исправляем опечатки
 const products = rawProducts.map(p => ({
     ...p,
@@ -41,16 +40,31 @@ function getCartTotalItems() {
     return getCart().reduce((sum, item) => sum + item.quantity, 0);
 }
 
-// === SVG-Плейсхолдер (генерируется в браузере, работает всегда!) ===
+// === SVG-ПЛЕЙСХОЛДЕР ===
 function getPlaceholderSVG(name, brand) {
     const initials = (brand || name || '?').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
-    const bg = '22c55e'; // зелёный как у шапки
+    const bg = '22c55e';
     const text = encodeURIComponent(initials);
     return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23${bg}'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='28' font-weight='bold' fill='white'%3E${text}%3C/text%3E%3C/svg%3E`;
 }
 
+// === ЗАКРЫТИЕ БАННЕРА ===
+function closePromoBanner() {
+    const banner = document.getElementById('promoBanner');
+    if (banner) {
+        banner.style.display = 'none';
+        localStorage.setItem('promoBannerClosed', 'true');
+    }
+}
+
 // === ИНИЦИАЛИЗАЦИЯ ===
 document.addEventListener('DOMContentLoaded', () => {
+    // Проверяем баннер при загрузке
+    if (localStorage.getItem('promoBannerClosed') === 'true') {
+        const banner = document.getElementById('promoBanner');
+        if (banner) banner.style.display = 'none';
+    }
+    
     updateCartDisplay();
     updateCartCounter();
 });
